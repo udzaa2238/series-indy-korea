@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Series Indy Korea 2025-13</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100%;
+      background: #000;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    /* Search/filter bar */
+    .filter-bar {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-bar input, .filter-bar select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #1f2025;
+      color: #fff;
+    }
+
+    /* Movie grid 5 columns */
+    /* Movie grid */
+    .movies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 -5px;
+      padding-top: 10px;
+    }
+    .movie-item {
+      flex: 0 0 10%; /* เล็กลง, 5 คอลัมน์ต่อแถว */
+      box-sizing: border-box;
+      padding: 0 5px;
+      margin-bottom: 20px;
+      max-width: 200px; /* หรือจำกัดขนาดสูงสุด */
+    }
+    .movie-box {
+      background: #1f2025;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .movie-image button {
+      width: 100%;
+      height: 0;
+      padding-top: 147%;
+      background-size: cover;
+      background-position: center;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .movie-title {
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.2;
+      padding: 0 4px;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1200px) {
+      .movie-item { flex: 0 0 33.333%; }
+    }
+    @media (max-width: 900px) {
+      .movie-item { flex: 0 0 50%; }
+    }
+    @media (max-width: 600px) {
+      .movie-item { flex: 0 0 100%; }
+    }
+
+    .pagination-wrapper { text-align: center; margin-top: 20px; }
+    .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+  </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
+
+      // Filter logic
+      function normalizeText(t) {
+        return t.trim().toLowerCase();
+      }
+
+      function applyFilter() {
+        const query = normalizeText($("#movie-search").val() || "");
+        const category = $("#category-filter").val();
+        $(".movie-item").each(function() {
+          const title = normalizeText($(this).find(".movie-title").text() || "");
+          const itemCat = $(this).attr("data-category") || "all";
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if (matchesSearch && matchesCategory) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" style="background-color:rgba(0,0,0,0); height:100%;">
+    <div class="container_wrap">
+      <div class="row" style="background-color:#27282c;border-radius:5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:10px;margin-bottom:10px;">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
+              <div class="logo"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-xs-12">
+              <div class="col-lg-12 col-md-12 col-xs-12" align="left" style="padding:5px;">
+                <div class="form-inline">
+                  <div class="form-group" style="margin:5px;">
+                    <form action="" method="get" name="lange" style="display:inline;">
+                      <input name="lange" type="hidden" id="lange" value="en">
+                      <input type="image" src="/web/images/en.gif" name="submit" width="60" height="20" alt="submit"/>
+                    </form>
+                  </div>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+              <select id="category-filter">
+                <option value="all">ทั้งหมด</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="exclusive">Exclusive</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
+		  
+
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/v9MWOkeVs9/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/V1Ex7lWBZ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/3m1UQqX8cC/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/i2TJTQjHP2/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/jTP4hYcxN8/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/pYCrQPSsUa/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/yhpTYtDVE/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/VI3eqOMTaU/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/p9hxnIsdW7/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Chief Detective 1958 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2024/04/Chief-Detective-1958.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/f9fr498sH/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Chief Detective 1958 (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ErNgtW2EJJ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/tnWiI5BE2P/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/uKFbTUYGUE/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/zlVOWWQ8rh/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/uUKrxnmywX/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/xZfzZdQJaO/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ug0zkL5Pq/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/DTec3lL4Fi/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/daFtCKzm42/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/4FQMtWIcki/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/pyoVk8leSj/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Crash – หน่วยจราจรปราบทรชน (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2024/05/1715495598-8106-uZfEkKi3yn8epQpukKrCtLOv7fc.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/4jN7uuKr6/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Crash – หน่วยจราจรปราบทรชน (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/rq2OEjwzL0/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/IeHEt1llt1/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/g1VkrJyPGj/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/PAO0k5fU60/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/zNw7h148KL/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/LtG5AXBFvq/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ythAQh8dX0/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2024/08/Queen-Woo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/3xR1xtIt7e/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Queen Woo – ราชินีอู กู้บัลลังก์ (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/YCO4ddDP/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 1</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/z4Pnp7e/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 2</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/z9S6rrKL/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 3</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/HVSGHWsv/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 4</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/3Xy6YqeG/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 5</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/mmSU1Xlq/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 6</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/BMlqfPPO/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 7</div>
+</div>
+
+<div class="movie-item" data-category="My Name – ชื่อฉัน (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2021/11/my-name.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/vvQzIpJR/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Name ชื่อฉัน(พากย์ไทย) - EP 8</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/7ZSwFvilss/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/A7NCcvUegz/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/wi3nsp0hwO/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/cQJFmruAF/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/aqU5mE63R/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/DfWWQ6KfH/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/wcWjRVysfP/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/NFyhgUDg8k/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/uSHStTUtMF/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/n5dDhgeDk/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/aNhezLOnpb/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/YxkiCsxawN/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/pTmk0ecux4/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/4RALsQ1l9B/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ldbpLn87kr/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2024/08/My-Sweet-Mobster.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/1GzVI74pk9/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">My Sweet Mobster – ตกหัวใจนายจอมโหด (พากย์ไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="Soundtrack #2 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/12/1701964143-4940-ut611KBWBmhL6YRv5IDZTdrpV2X.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/cFZPyRNw1/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Soundtrack #2 (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Soundtrack #2 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/12/1701964143-4940-ut611KBWBmhL6YRv5IDZTdrpV2X.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/bX1A60r2Ms/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Soundtrack #2 (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Soundtrack #2 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/12/1701964143-4940-ut611KBWBmhL6YRv5IDZTdrpV2X.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/fxtCXkcd6M/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Soundtrack #2 (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Soundtrack #2 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/12/1701964143-4940-ut611KBWBmhL6YRv5IDZTdrpV2X.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/8BamOHs1xZ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Soundtrack #2 (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Soundtrack #2 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/12/1701964143-4940-ut611KBWBmhL6YRv5IDZTdrpV2X.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/yBsiK65uAx/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Soundtrack #2 (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Soundtrack #2 (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/12/1701964143-4940-ut611KBWBmhL6YRv5IDZTdrpV2X.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/Uw2Ip6kVE/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Soundtrack #2 (ซับไทย) - ตอนที่ 6</div>
+</div>
+																	
+
+
+	
+<!-- Pagination -->
+     <div class="pagination-wrapper">
+     <nav>
+     <ul class="pagination">
+     <li><a href="go:main-indy" aria-label=" "><span aria-hidden="true"><< กลับหน้าแรก</span></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-11.html">หน้าที่ 11</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-12.html">หน้าที่ 12</a></li>               
+<li class="active"><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-13.html"><b>หน้าที่ 13</b></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-14.html">หน้าที่ 14</a></li>				
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-15.html">หน้าที่ 15</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-16.html">หน้าที่ 16</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-17.html">หน้าที่ 17</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-18.html">หน้าที่ 18</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-19.html">หน้าที่ 19</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-20.html">หน้าที่ 20</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-21.html">หน้าที่ 21»</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-45.html">หน้าสุดท้าย»</a></li>
+        
+			</ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
