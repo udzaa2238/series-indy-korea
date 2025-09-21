@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Series Indy Korea 2025-35</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100%;
+      background: #000;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    /* Search/filter bar */
+    .filter-bar {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-bar input, .filter-bar select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #1f2025;
+      color: #fff;
+    }
+
+    /* Movie grid 5 columns */
+    /* Movie grid */
+    .movies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 -5px;
+      padding-top: 10px;
+    }
+    .movie-item {
+      flex: 0 0 10%; /* เล็กลง, 5 คอลัมน์ต่อแถว */
+      box-sizing: border-box;
+      padding: 0 5px;
+      margin-bottom: 20px;
+      max-width: 200px; /* หรือจำกัดขนาดสูงสุด */
+    }
+    .movie-box {
+      background: #1f2025;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .movie-image button {
+      width: 100%;
+      height: 0;
+      padding-top: 147%;
+      background-size: cover;
+      background-position: center;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .movie-title {
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.2;
+      padding: 0 4px;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1200px) {
+      .movie-item { flex: 0 0 33.333%; }
+    }
+    @media (max-width: 900px) {
+      .movie-item { flex: 0 0 50%; }
+    }
+    @media (max-width: 600px) {
+      .movie-item { flex: 0 0 100%; }
+    }
+
+    .pagination-wrapper { text-align: center; margin-top: 20px; }
+    .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+  </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
+
+      // Filter logic
+      function normalizeText(t) {
+        return t.trim().toLowerCase();
+      }
+
+      function applyFilter() {
+        const query = normalizeText($("#movie-search").val() || "");
+        const category = $("#category-filter").val();
+        $(".movie-item").each(function() {
+          const title = normalizeText($(this).find(".movie-title").text() || "");
+          const itemCat = $(this).attr("data-category") || "all";
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if (matchesSearch && matchesCategory) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" style="background-color:rgba(0,0,0,0); height:100%;">
+    <div class="container_wrap">
+      <div class="row" style="background-color:#27282c;border-radius:5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:10px;margin-bottom:10px;">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
+              <div class="logo"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-xs-12">
+              <div class="col-lg-12 col-md-12 col-xs-12" align="left" style="padding:5px;">
+                <div class="form-inline">
+                  <div class="form-group" style="margin:5px;">
+                    <form action="" method="get" name="lange" style="display:inline;">
+                      <input name="lange" type="hidden" id="lange" value="en">
+                      <input type="image" src="/web/images/en.gif" name="submit" width="60" height="20" alt="submit"/>
+                    </form>
+                  </div>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+              <select id="category-filter">
+                <option value="all">ทั้งหมด</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="exclusive">Exclusive</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
+		  
+
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/QsCVtIysVS/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/sui0dWGEXX/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/PwKoiylpO/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/1V8mMm1Bsf/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/J7o5CESUCU/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/TSVRv37nQc/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/gN2CwsVIh1/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/Ab6wkob1YE/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/2lHvEJNyD/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/JoHgqFeLD/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/P414SKDiHK/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ruVUuWysTn/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/OETtNDKxLK/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/a0mcjw3vOL/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/Rrc9HjoMWh/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="Doctor Cha – คุณหมอชา (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/04/Doctor-Cha-คุณหมอชา.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/eE1ymlod39/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Doctor Cha – คุณหมอชา (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483330669090/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483395746338/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483395680802/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483455056418/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483454925346/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483920099874/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483919968802/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483920034338/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483920165410/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483965844002/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483965581858/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483965647394/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483965778466/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483965975074/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483966040610/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="Agency – เอเจนซี่ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/1685517361-8977-cENXu00MIL9meWyDILOcfGmjsWO.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5483966237218/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Agency – เอเจนซี่ (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/5or6hXo62f/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/e8LpiEQpns/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/mPgjsMPZC/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/C8ocHdwhES/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/y2IjRYcHbo/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/VO1DMClpW5/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ZHRYJh3Jb/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="All That We Loved (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/05/1683238076-6600-pioZKN9PG3LJIcDrU4wfrMwotPF.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/A86H8hGx9m/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">All That We Loved (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ffMsXaohSA/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/uuW3wFxTEC/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/m7V4soRuX/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/1yGnbdmzAq/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/KZlASVnkc5/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/tsaUrN78Y/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/bWNW3nguXu/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/9Cm7qgjA6i/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah - ตามใจรัก (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/3JeTkmm1NX/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/vjmsjZ9BPP/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/jL0A2mE7bL/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/50O24VsFud/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/iB8j9FwcY/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/04/True-to-Love-Bo-Ra-Deborah-ตามใจรัก.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/wUuyuAjU94/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True to Love Bo Ra! Deborah – ตามใจรัก (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/5ZyAsYdIIx/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/JAFUeuVDG/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/kweesIL1Ff/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/Rq13v3cQPE/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/hlTZJb33xj/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/DfrhQueyNy/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/uAJ2IQIjsP/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/XwFatqTLGt/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/OAYdQu7NVF/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/05/final-2.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/0TsxyxKoqy/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">XO Kitty – ด้วยรักจากคิตตี้ (พากย์ไทย) - ตอนที่ 10</div>
+</div>
+
+
+
+	
+<!-- Pagination -->
+     <div class="pagination-wrapper">
+     <nav>
+     <ul class="pagination">
+     <li><a href="go:main-indy" aria-label=" "><span aria-hidden="true"><< กลับหน้าแรก</span></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-31.html">หน้าที่ 31</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-32.html">หน้าที่ 32</a></li>               
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-33.html">หน้าที่ 33</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-34.html">หน้าที่ 34</a></li>				
+<li class="active"><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-35.html"><b>หน้าที่ 35</b></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-36.html">หน้าที่ 36</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-37.html">หน้าที่ 37</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-38.html">หน้าที่ 38</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-39.html">หน้าที่ 39</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-40.html">หน้าที่ 40</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-41.html">หน้าที่ 41»</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-45.html">หน้าสุดท้าย»</a></li>
+        
+			</ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

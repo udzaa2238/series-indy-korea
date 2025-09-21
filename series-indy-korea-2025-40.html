@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Series Indy Korea 2025-40</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100%;
+      background: #000;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    /* Search/filter bar */
+    .filter-bar {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-bar input, .filter-bar select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #1f2025;
+      color: #fff;
+    }
+
+    /* Movie grid 5 columns */
+    /* Movie grid */
+    .movies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 -5px;
+      padding-top: 10px;
+    }
+    .movie-item {
+      flex: 0 0 10%; /* เล็กลง, 5 คอลัมน์ต่อแถว */
+      box-sizing: border-box;
+      padding: 0 5px;
+      margin-bottom: 20px;
+      max-width: 200px; /* หรือจำกัดขนาดสูงสุด */
+    }
+    .movie-box {
+      background: #1f2025;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .movie-image button {
+      width: 100%;
+      height: 0;
+      padding-top: 147%;
+      background-size: cover;
+      background-position: center;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .movie-title {
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.2;
+      padding: 0 4px;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1200px) {
+      .movie-item { flex: 0 0 33.333%; }
+    }
+    @media (max-width: 900px) {
+      .movie-item { flex: 0 0 50%; }
+    }
+    @media (max-width: 600px) {
+      .movie-item { flex: 0 0 100%; }
+    }
+
+    .pagination-wrapper { text-align: center; margin-top: 20px; }
+    .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+  </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
+
+      // Filter logic
+      function normalizeText(t) {
+        return t.trim().toLowerCase();
+      }
+
+      function applyFilter() {
+        const query = normalizeText($("#movie-search").val() || "");
+        const category = $("#category-filter").val();
+        $(".movie-item").each(function() {
+          const title = normalizeText($(this).find(".movie-title").text() || "");
+          const itemCat = $(this).attr("data-category") || "all";
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if (matchesSearch && matchesCategory) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" style="background-color:rgba(0,0,0,0); height:100%;">
+    <div class="container_wrap">
+      <div class="row" style="background-color:#27282c;border-radius:5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:10px;margin-bottom:10px;">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
+              <div class="logo"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-xs-12">
+              <div class="col-lg-12 col-md-12 col-xs-12" align="left" style="padding:5px;">
+                <div class="form-inline">
+                  <div class="form-group" style="margin:5px;">
+                    <form action="" method="get" name="lange" style="display:inline;">
+                      <input name="lange" type="hidden" id="lange" value="en">
+                      <input type="image" src="/web/images/en.gif" name="submit" width="60" height="20" alt="submit"/>
+                    </form>
+                  </div>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+              <select id="category-filter">
+                <option value="all">ทั้งหมด</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="exclusive">Exclusive</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
+		  
+
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/E4rpVDGk/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/VCSdTxL2/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/QPhRWyzN/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/8xumB8B2/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/dlDJ5d5c/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/FFO6QFOC/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/90Xyxsz/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/VWmVgXc/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/duCk8DyQ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/Alchemy-of-Souls-Season-2-.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/gtWWmcBr/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Alchemy of Souls Season 2 – เล่นแร่แปรวิญญาณ ภาค 2 (พากย์ไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Island – เกาะปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/Island-season-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/6EuNaKp/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Island – เกาะปีศาจ (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Island – เกาะปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/Island-season-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/XXuPHwlY/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Island – เกาะปีศาจ (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Island – เกาะปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/Island-season-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/Jlwfa0hY/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Island – เกาะปีศาจ (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Island – เกาะปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/Island-season-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/J8gPt4I4/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Island – เกาะปีศาจ (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Island – เกาะปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/Island-season-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/dMQhWAKF/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Island – เกาะปีศาจ (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Island – เกาะปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/Island-season-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/r7IlvdOo/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Island – เกาะปีศาจ (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/d4XcxRgt/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/CN2lVgAR/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/mLwRwYIG/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/YRRwliag/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/tmeTUC7p/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ZmvLxSix/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/QtEaxu3t/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Individual Circumstances (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/01/1674106544-6871-xg47BlqZ8ql44YPgFf8ETTGTBdQ.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/RuZKPLkk/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Individual Circumstances (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/v79fglF9/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/NLxlx7t5/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/oSylNrJv/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/V0Qi1z9G/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/3o0q6Mh/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/7u3xPi5O/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/7IQC63bQ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/79pWATcG/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/DYIcAuhi/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/5FYc5PxO/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/xtONut12/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/3WvJaCZj/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/N8uSI4jQ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/DohpZD4S/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ThS5SqID/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="Trolley (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2022/12/1671447839-2610-3hFeEpmC6ikwSNZ0WAHdzV9Uiq5.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/dhmBKHTU/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Trolley (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/kIJm08PU/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ygRh1QVG/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/xhD1F6xz/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/eVjQkBAe/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/yL8GK5LZ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/dMQr46iR/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/BFy9FaWE/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/bXh52DZx/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/IRmfxZpd/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/TDM2GKl6/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/7xNXGxci/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/5r6Q5es/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/7hmO2cEH/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/1jfIXyN/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/H6buJQ4/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="True Beauty – ความลับของนางฟ้า (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i2.wp.com/series-indy.com/wp-content/uploads/2023/02/1676300849-8336-sld43SJArZqlnANJabq8R5wdOZk.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/0AW5bXuO/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">True Beauty – ความลับของนางฟ้า (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4561545333282/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4561545267746/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4562612062754/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4562612128290/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4580777003554/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4580764027426/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4584157874722/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4584157809186/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4602030918178/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4602031049250/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4622252968482/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4622252902946/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4622219807266/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4622219872802/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4625282173474/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="The Law Cafe (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/01/The-Law-Cafe-TH.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4625282239010/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Law Cafe (พากย์ไทย) - ตอนที่ 16</div>
+</div>
+
+
+
+	
+<!-- Pagination -->
+     <div class="pagination-wrapper">
+     <nav>
+     <ul class="pagination">
+     <li><a href="go:main-indy" aria-label=" "><span aria-hidden="true"><< กลับหน้าแรก</span></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-31.html">หน้าที่ 31</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-32.html">หน้าที่ 32</a></li>               
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-33.html">หน้าที่ 33</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-34.html">หน้าที่ 34</a></li>				
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-35.html">หน้าที่ 35</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-36.html">หน้าที่ 36</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-37.html">หน้าที่ 37</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-38.html">หน้าที่ 38</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-39.html">หน้าที่ 39</a></li>
+<li class="active"><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-40.html"><b>หน้าที่ 40</b></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-41.html">หน้าที่ 41»</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-45.html">หน้าสุดท้าย»</a></li>
+        
+			</ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

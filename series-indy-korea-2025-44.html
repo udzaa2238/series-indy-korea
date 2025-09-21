@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Series Indy Korea 2025-44</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100%;
+      background: #000;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    /* Search/filter bar */
+    .filter-bar {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-bar input, .filter-bar select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #1f2025;
+      color: #fff;
+    }
+
+    /* Movie grid 5 columns */
+    /* Movie grid */
+    .movies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 -5px;
+      padding-top: 10px;
+    }
+    .movie-item {
+      flex: 0 0 10%; /* เล็กลง, 5 คอลัมน์ต่อแถว */
+      box-sizing: border-box;
+      padding: 0 5px;
+      margin-bottom: 20px;
+      max-width: 200px; /* หรือจำกัดขนาดสูงสุด */
+    }
+    .movie-box {
+      background: #1f2025;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .movie-image button {
+      width: 100%;
+      height: 0;
+      padding-top: 147%;
+      background-size: cover;
+      background-position: center;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .movie-title {
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.2;
+      padding: 0 4px;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1200px) {
+      .movie-item { flex: 0 0 33.333%; }
+    }
+    @media (max-width: 900px) {
+      .movie-item { flex: 0 0 50%; }
+    }
+    @media (max-width: 600px) {
+      .movie-item { flex: 0 0 100%; }
+    }
+
+    .pagination-wrapper { text-align: center; margin-top: 20px; }
+    .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+  </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
+
+      // Filter logic
+      function normalizeText(t) {
+        return t.trim().toLowerCase();
+      }
+
+      function applyFilter() {
+        const query = normalizeText($("#movie-search").val() || "");
+        const category = $("#category-filter").val();
+        $(".movie-item").each(function() {
+          const title = normalizeText($(this).find(".movie-title").text() || "");
+          const itemCat = $(this).attr("data-category") || "all";
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if (matchesSearch && matchesCategory) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" style="background-color:rgba(0,0,0,0); height:100%;">
+    <div class="container_wrap">
+      <div class="row" style="background-color:#27282c;border-radius:5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:10px;margin-bottom:10px;">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
+              <div class="logo"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-xs-12">
+              <div class="col-lg-12 col-md-12 col-xs-12" align="left" style="padding:5px;">
+                <div class="form-inline">
+                  <div class="form-group" style="margin:5px;">
+                    <form action="" method="get" name="lange" style="display:inline;">
+                      <input name="lange" type="hidden" id="lange" value="en">
+                      <input type="image" src="/web/images/en.gif" name="submit" width="60" height="20" alt="submit"/>
+                    </form>
+                  </div>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+              <select id="category-filter">
+                <option value="all">ทั้งหมด</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="exclusive">Exclusive</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
+		  
+
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/K2MDjV6/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/xJEMMtdH/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/cSqT7MHx/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/nXRDcVAJ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/rL6syhDJ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/fRKf27dU/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/RVzWYN3g/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/12/The-Fabulous.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/rUQXboIZ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Fabulous – หรู เริ่ด เชิด โสด (พากย์ไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/sKMxOTNN/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/JJbNujTL/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/7hho8qlu/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/76pwv0df/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/nj20U8V/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/OXapelT0/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/HAYiTDKy/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/LzIZsHSZ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/HlTo0Cw/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/wDNgPSxh/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/X2PliyKS/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/mKG0WNif/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/FYyYwXTw/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/sL4hLc7s/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/tCyQofje/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/10/May-I-Help-You-ปิ๊งหัวใจนายบัตเลอร์.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/7lFSlGhm/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">May I Help You – ปิ๊งหัวใจนายบัตเลอร์ (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/LwMVlEar/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 1</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/XFWGpPwi/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 2</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/UVHrwd5A/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 3</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/DF0R084b/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 4</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/gFJmJd7z/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 5</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/yNv91x/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 6</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/6DaewZN7/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 7</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/mH2D87DU/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 8</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/Nw6rK6Dy/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 9</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/GhGbBbB2/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 10</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/iUX446u9/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 11</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/ef6uierr/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 12</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/I9Qw4Ilr/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 13</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/xU52pVyy/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 14</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/QNW7ocyW/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 15</div>
+</div>
+
+<div class="movie-item" data-category="The Beauty Inside (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2022/01/The-Beauty-Inside.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/734bsZl7/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Beauty Inside (ซับไทย) - EP 16</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4102869158434/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4110407764514/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4135168182818/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4137306884642/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4161010338338/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4163035662882/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4190035773986/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4191611652642/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4261972871714/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4301439306274/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4305981016610/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4373330266658/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4391077939746/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4395518724642/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4419962079778/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="Cheer Up (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2022/10/Cheer-Up.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/4423283575330/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Cheer Up (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/bZnIPV0e/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/nK7WPrBe/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/kjZl5saG/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/gAsqYVAQ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/M1zbWrUo/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/fTZ6604h/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/sYcwtZio/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/BxEvLJUR/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/N9axTL6V/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/l7kZrjrb/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/EYvtG63p/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2022/11/Behind-Every-Star-ผู้จัดการซุปตาร์ว้าวุ่น.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/g43ocAUs/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Behind Every Star – ผู้จัดการซุปตาร์ว้าวุ่น (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+
+
+	
+<!-- Pagination -->
+     <div class="pagination-wrapper">
+     <nav>
+     <ul class="pagination">
+     <li><a href="go:main-indy" aria-label=" "><span aria-hidden="true"><< กลับหน้าแรก</span></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-41.html">หน้าที่ 41</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-42.html">หน้าที่ 42</a></li>               
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-43.html">หน้าที่ 43</a></li>
+<li class="active"><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-44.html"><b>หน้าที่ 44</b></a></li>				
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-45.html">หน้าที่ 45</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-46.html">หน้าที่ 46</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-47.html">หน้าที่ 47</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-48.html">หน้าที่ 48</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-49.html">หน้าที่ 49</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-50.html">หน้าที่ 50</a></li>
+        
+			</ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

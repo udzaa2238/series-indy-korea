@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Series Indy Korea 2025-32</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- External CSS -->
+  <link href="https://playtvthai.github.io/m3u8/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://playtvthai.github.io/m3u8/css/style.css" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/normalize.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/custom.css">
+  <link rel="stylesheet" href="https://playtvthai.github.io/m3u8/css/main.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/assets_remark/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" href="http://hdtvdd.com/work/font/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/8k.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="http://hdtvdd.com/work/css/overlay.css" type="text/css" charset="utf-8">
+  <link href="http://hdtvdd.com/work/css/theme.css" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+  <!-- JS (dedupe jQuery) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://playtvthai.github.io/m3u8/js/jquery.backstretch.js"></script>
+  <script src="http://hdtvdd.com/work/bootstrap-login-forms/form-2/assets/js/scripts.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100%;
+      background: #000;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    *, *:before, *:after { box-sizing: inherit; }
+
+    /* Search/filter bar */
+    .filter-bar {
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-bar input, .filter-bar select {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background: #1f2025;
+      color: #fff;
+    }
+
+    /* Movie grid 5 columns */
+    /* Movie grid */
+    .movies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 -5px;
+      padding-top: 10px;
+    }
+    .movie-item {
+      flex: 0 0 10%; /* เล็กลง, 5 คอลัมน์ต่อแถว */
+      box-sizing: border-box;
+      padding: 0 5px;
+      margin-bottom: 20px;
+      max-width: 200px; /* หรือจำกัดขนาดสูงสุด */
+    }
+    .movie-box {
+      background: #1f2025;
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .movie-image button {
+      width: 100%;
+      height: 0;
+      padding-top: 147%;
+      background-size: cover;
+      background-position: center;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .movie-title {
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 6px;
+      line-height: 1.2;
+      padding: 0 4px;
+      word-break: break-word;
+    }
+
+    @media (max-width: 1200px) {
+      .movie-item { flex: 0 0 33.333%; }
+    }
+    @media (max-width: 900px) {
+      .movie-item { flex: 0 0 50%; }
+    }
+    @media (max-width: 600px) {
+      .movie-item { flex: 0 0 100%; }
+    }
+
+    .pagination-wrapper { text-align: center; margin-top: 20px; }
+    .pagination > li > a, .pagination > li > span { padding: 6px 12px; }
+  </style>
+
+  <script>
+    $(document).ready(function(){
+      $("#myBtn").click(function(){ $("#myModal").modal(); });
+      $("#myBtn2").click(function(){ $("#myModal2").modal(); });
+      $("#myBtn_vip").click(function(){ $("#myModal_vip").modal(); });
+      $("#myBtn_cpass").click(function(){ $("#myModal_changepass").modal(); });
+
+      // Filter logic
+      function normalizeText(t) {
+        return t.trim().toLowerCase();
+      }
+
+      function applyFilter() {
+        const query = normalizeText($("#movie-search").val() || "");
+        const category = $("#category-filter").val();
+        $(".movie-item").each(function() {
+          const title = normalizeText($(this).find(".movie-title").text() || "");
+          const itemCat = $(this).attr("data-category") || "all";
+          const matchesSearch = query === "" || title.includes(query);
+          const matchesCategory = category === "all" || itemCat === category;
+          if (matchesSearch && matchesCategory) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+      }
+
+      $("#movie-search").on("input", applyFilter);
+      $("#category-filter").on("change", applyFilter);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container" style="background-color:rgba(0,0,0,0); height:100%;">
+    <div class="container_wrap">
+      <div class="row" style="background-color:#27282c;border-radius:5px;">
+        <div class="col-lg-12 col-md-12 col-xs-12" style="margin-top:10px;margin-bottom:10px;">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5">
+              <div class="logo"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-xs-12">
+              <div class="col-lg-12 col-md-12 col-xs-12" align="left" style="padding:5px;">
+                <div class="form-inline">
+                  <div class="form-group" style="margin:5px;">
+                    <form action="" method="get" name="lange" style="display:inline;">
+                      <input name="lange" type="hidden" id="lange" value="en">
+                      <input type="image" src="/web/images/en.gif" name="submit" width="60" height="20" alt="submit"/>
+                    </form>
+                  </div>
+                  <label for="form-password"><font color="white">ชื่อ : </font><font color="yellow">[ ผู้เฒ่าพเนจร ™ ]</font></label>
+
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:digital'">🏠 Home ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:live'">📡 ถ่ายทอดสด ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-serie'">🎞️ ดูซีรี่ย์ ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">🎥 ดูหนัง ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='go:main-movie'">📽️ ดูสารคดี ™</button>
+                  <button class="btn btn-default" type="button" style="background-color:transparent;border-radius:2px;border:0;font-size:18px;color:#FFF;padding:0 5px;font-family:'rsuregular';" onclick="window.location.href='http://action_exit'">🚪 ออก</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- filter bar -->
+          <div class="filter-bar">
+            <div>
+              <input id="movie-search" type="text" placeholder="ค้นหาหนัง..." />
+            </div>
+            <div>
+              <select id="category-filter">
+                <option value="all">ทั้งหมด</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="exclusive">Exclusive</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- รวมทุก movie-item ไว้ใน grid เดียว -->
+          <div class="movies-grid">
+		  
+
+
+
+<div class="movie-item" data-category="MASK GIRL  (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/08/final-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/OTt3ygRoER/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">MASK GIRL  (พากย์ไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="MASK GIRL  (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/08/final-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/4n57HOvq9j/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">MASK GIRL  (พากย์ไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="MASK GIRL  (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/08/final-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/exARSI0mht/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">MASK GIRL  (พากย์ไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="MASK GIRL  (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/08/final-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/pn9SuDy3DW/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">MASK GIRL  (พากย์ไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="MASK GIRL  (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/08/final-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/CXEHOjJfLT/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">MASK GIRL  (พากย์ไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="MASK GIRL  (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/08/final-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/YDjuDWooLn/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">MASK GIRL  (พากย์ไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="MASK GIRL  (พากย์ไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/08/final-1.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/mJOyxl9lAI/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">MASK GIRL  (พากย์ไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/gROk2jILR6/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/81E95trLd2/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/aZIhdWSXWC/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/IvgEr06UwN/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/GYRFnx8PN8/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/AfNYIcsT1W/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/CXKnOuItq8/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/UzhNlWGHLm/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/453VqFW3oP/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/04OJT5vHCn/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/kQFM8WdHn/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/eMk7bodARA/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/kYsxq7lKQ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/lXTukWpRTg/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/DbXLqP3vV4/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="HeartBeat – จังหวะหัวใจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i3.wp.com/series-indy.com/wp-content/uploads/2023/06/1687782158-6924-byISvNNsqbc0fRYwQkp5goeFfYo.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/kQhZ9qePDM/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">HeartBeat – จังหวะหัวใจ (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5692742896162/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5730062502434/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5927888947746/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5957764844066/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6133052344866/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6136147479074/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6237395159586/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6261274642978/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6306981218850/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6330004015650/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6352811985442/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6356082952738/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6375837207074/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 13</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6378876570146/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 14</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6414840171042/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 15</div>
+</div>
+
+<div class="movie-item" data-category="Durian’s Affair (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2023/06/Durians-Affair.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6417999792674/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Durian’s Affair (ซับไทย) - ตอนที่ 16</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5666706491938/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 1</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5697643285026/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 2</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5891235121698/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 3</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/5927784679970/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 4</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6124625857058/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 5</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6133015710242/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 6</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6223386053154/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 7</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6237325756962/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 8</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6303984126498/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 9</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6306929904162/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 10</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6349700008482/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 11</div>
+</div>
+
+<div class="movie-item" data-category="Numbers (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i0.wp.com/series-indy.com/wp-content/uploads/2023/06/1687491956-6103-1V6bwjbpaeKIVgdhAXr4RGYUoLB.jpg?resize=200,300);" onclick="window.location.href='https://ok.ru/videoembed/6352761063970/'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">Numbers (ซับไทย) - ตอนที่ 12</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/GD0M3mv5/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 1</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/f6vWjn0a/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 2</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/k7NjlDZS/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 3</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/90ThHVzp/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 4</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/G2MDZGVQ/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 5</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/HgOVCtQh/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 6</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/1MFk7vmq/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 7</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/33JSuVY9/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 8</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/VCXrEXPq/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 9</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/pOa2juuG/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 10</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/6VqHaxP/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 11</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/MQJSsacT/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 12</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/onzrhbdw/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 13</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/TiUtfoVb/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 14</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/04a3hXzj/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 15</div>
+</div>
+
+<div class="movie-item" data-category="The Uncanny Counter – คนล่าปีศาจ (ซับไทย)">
+  <div class="movie-box">
+    <div class="movie-image">
+      <button type="button" style="background-image:url(https://i1.wp.com/series-indy.com/wp-content/uploads/2021/12/The-Uncanny-Counter.jpg?resize=200,300);" onclick="window.location.href='https://series-cdn.team-indy.net:8443/vod/6iVECwOw/video.mp4/playlist.m3u8'" autofocus="">
+      </button>
+    </div>
+  </div>
+  <div class="movie-title">The Uncanny Counter – คนล่าปีศาจ (ซับไทย) - EP 16</div>
+</div>
+
+
+	
+<!-- Pagination -->
+     <div class="pagination-wrapper">
+     <nav>
+     <ul class="pagination">
+     <li><a href="go:main-indy" aria-label=" "><span aria-hidden="true"><< กลับหน้าแรก</span></a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-31.html">หน้าที่ 31</a></li>
+<li class="active"><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-32.html"><b>หน้าที่ 32</b></a></li>               
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-33.html">หน้าที่ 33</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-34.html">หน้าที่ 34</a></li>				
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-35.html">หน้าที่ 35</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-36.html">หน้าที่ 36</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-37.html">หน้าที่ 37</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-38.html">หน้าที่ 38</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-39.html">หน้าที่ 39</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-40.html">หน้าที่ 40</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-2025-41.html">หน้าที่ 41»</a></li>
+     <li><a href="https://udzaa2238.github.io/series-indy-korea/series-indy-korea-45.html">หน้าสุดท้าย»</a></li>
+        
+			</ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
